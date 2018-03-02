@@ -4,8 +4,8 @@
 * [Golang specification ](https://golang.org/ref/spec)
 * [introduction book](https://www.golang-book.com/books/intro)
 * [examples](https://gobyexample.com)
-
 * [concurrency in go](http://mindmapengineers.com/mmeblog/lets-go-golang-concurrency-part-1)
 * [effective go](https://golang.org/doc/effective_go.html)
 * [awesome go](https://www.awesome-go.com/)
 * [go wiki](https://golang.org/doc/articles/wiki/)
+* [standard packages documentation](https://golang.org/pkg/)
