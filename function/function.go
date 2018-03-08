@@ -26,6 +26,7 @@ func privateFunctionSwap2(x, y string) (b, a string) {
 }
 
 func closureExample(magicNumber int) func(koef int) int {
+	magicNumber += 2
 	var offset = magicNumber * 2
 	return func(a int) int {
 		return offset + a*2
