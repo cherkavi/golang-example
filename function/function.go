@@ -32,7 +32,7 @@ func closureExample(magicNumber int) func(koef int) int {
 	}
 }
 
-func executeFunction( f func(a int) int ) int{
+func executeFunction(f func(a int) int) int {
 	return f(5)
 }
 
