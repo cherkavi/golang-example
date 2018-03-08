@@ -12,7 +12,6 @@ import (
 	_ "./inner3"
 )
 
-
 func privateFunctionWithoutReturnValue() {
 }
 
@@ -26,34 +25,41 @@ func privateFunctionSwap2(x, y string) (b, a string) {
 	return
 }
 
-func closureExample(magicNumber int) (func(koef int) int){
+func closureExample(magicNumber int) func(koef int) int {
 	var offset = magicNumber * 2
-	return func(koef int) int {
-		return offset + koef * 2
+	return func(a int) int {
+		return offset + a*2
 	}
 }
 
-func main(){
+func executeFunction( f func(a int) int ) int{
+	return f(5)
+}
+
+func main() {
 	privateFunctionWithoutReturnValue()
 
-	x,y := functionSwap("1", "2")
-	x,y = privateFunctionSwap2("1", "2")
-	fmt.Printf("local swap function: %v   %v \n", x, y )
+	x, y := functionSwap("1", "2")
+	x, y = privateFunctionSwap2("1", "2")
+	fmt.Printf("local swap function: %v   %v \n", x, y)
 
-	sum := ExternalAdd(1,2,3,4)
+	sum := ExternalAdd(1, 2, 3, 4)
 	fmt.Println("execute external function ", sum)
 
-	array:=[]int{1,2,3,4}
+	array := []int{1, 2, 3, 4}
 	mul := f.ExternalMultiplication(array...)
 	fmt.Println("execute external function via alias", mul)
 
-	fmt.Println("closure example: " , closureExample(5)(2))
+	fmt.Println("closure example: ", closureExample(5)(2))
 
 	var closureFunction = closureExample(512)
 	closureFunction(5)
 
-	var closureFunction2 (func(koef int) int)
+	var closureFunction2 func(b int) int
 	closureFunction2 = closureExample(7)
 	closureFunction2(23)
+
+	a := executeFunction(closureFunction2)
+	fmt.Println(" result from function where parameter was another function ", a)
 
 }
