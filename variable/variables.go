@@ -5,6 +5,11 @@ import (
 	"fmt"
 )
 
+
+func changeOuterVariable(external *int){
+	*external= *external + 22
+}
+
 func main() {
 	// declare variable with default value
 	var a int
@@ -34,4 +39,7 @@ func main() {
 
 	fmt.Println("const from another package: ", constants.Message)
 
+	d := 10
+	changeOuterVariable(&d)
+	fmt.Println("variable after changing : ", d)
 }
