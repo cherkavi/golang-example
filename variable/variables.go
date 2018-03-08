@@ -32,4 +32,6 @@ func main() {
 
 	fmt.Println("value from another package: ", constants.A)
 
+	fmt.Println("const from another package: ", constants.Message)
+
 }
