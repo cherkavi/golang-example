@@ -91,4 +91,9 @@ func main() {
 	pixel1.Right = 5
 	pixel1.Color = "red"
 	Println("Embedded struct: ", pixel1)
+
+	p1:=Point{1,2}
+	p2:=Point{1,2}
+	p3:=struct{Left int; Right int}{1,2}
+	Printf("point#1:%p %#v  point#2:%p %#v  point#3:%p %#v   point#1==point#2:%v   point#1==point#3:%v", &p1, p1, &p2, p2, &p3, p3, p1==p2, p1==p3, )
 }
