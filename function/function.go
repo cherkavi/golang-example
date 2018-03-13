@@ -26,10 +26,10 @@ func privateFunctionSwap2(x, y string) (b, a string) {
 }
 
 func closureExample(magicNumber int) func(koef int) int {
-	magicNumber += 2
-	var offset = magicNumber * 2
+	var summator = magicNumber
 	return func(a int) int {
-		return offset + a*2
+		summator +=a
+		return summator
 	}
 }
 
@@ -53,14 +53,18 @@ func main() {
 
 	fmt.Println("closure example: ", closureExample(5)(2))
 
-	var closureFunction = closureExample(512)
-	closureFunction(5)
+	var closureFunction = closureExample(2)
+
+	for _, value := range []int{3,4,5,6,7,8,9}{
+		closureFunction(value)
+		closureFunction(value)
+	}
+	fmt.Printf("result of summarize: %v ", closureFunction(0))
 
 	var closureFunction2 func(b int) int
 	closureFunction2 = closureExample(7)
 	closureFunction2(23)
 
 	a := executeFunction(closureFunction2)
-	fmt.Println(" result from function where parameter was another function ", a)
-
+	fmt.Println("result from function where parameter was another function ", a)
 }
