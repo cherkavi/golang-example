@@ -9,3 +9,4 @@
 * [awesome go](https://www.awesome-go.com/)
 * [go wiki](https://golang.org/doc/articles/wiki/)
 * [standard packages documentation](https://golang.org/pkg/)
+* [golang patterns](http://www.golangpatterns.info/)
