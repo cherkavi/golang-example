@@ -9,7 +9,7 @@ import (
 type NewInteger int64
 
 func (value NewInteger) Len() int{ // copy structure each time when it executed
-	return len(strconv.Itoa(int(value)))
+	return len(strconv.Itoa(int(value))) // example of casting: [4]byte(value)
 }
 
 func (value *NewInteger) increment() int { // just send via pointer
