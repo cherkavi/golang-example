@@ -10,18 +10,19 @@ type Echo interface{
 	PrintEcho()
 }
 
-
+// ---- AStruct ----
 type AStruct struct{
+	// !!! Rule: Do not mix interface embedding with struct embedding. !!!
+	Echo // the same as field "Echo" with type "Echo" and it equals to nil
 }
 func (a AStruct) PrintEcho(){ // no 'implements' declaration need
 	fmt.Printf("%#v \n", a)
 }
-
 func (a AStruct) String() string{
 	return fmt.Sprintf("override toString method")
 }
 
-
+// ---- BStruct ----
 type BStruct struct{
 }
 func (b *BStruct) PrintEcho(){ // !!! pointer implemented interface !!!
@@ -32,10 +33,17 @@ func (b *BStruct) PrintEcho(){ // !!! pointer implemented interface !!!
 	fmt.Printf("%#v \n", b)
 }
 
-
+// ---- function to execute from interface  ----
 func executeEcho(e Echo){
 	e.PrintEcho()
 }
+
+// ---- interface with extension
+type EchoExtension interface{
+	Echo
+	PrintEcho2()
+}
+
 
 
 func whatTheType(i interface{}) {
@@ -48,6 +56,10 @@ func whatTheType(i interface{}) {
 		fmt.Println("type is BStruct")
 	case *BStruct:
 		fmt.Println("type is (*reference)BStruct")
+	case Echo:
+		fmt.Println("type is Echo")
+	case EchoExtension:
+		fmt.Println("type is EchoExtension")
 	default:
 		fmt.Printf("unknown type %T \n", v)
 	}
@@ -108,6 +120,12 @@ func main(){
 	fmt.Println("\n-------- toString ---------")
 	fmt.Println(AStruct{})
 
+	fmt.Println("\n-------- implement interface inline -------- ")
+	//v := AStruct {}
+	//v.PrintEcho = func (){
+	//	fmt.Println("EchoExtension PrintEcho")
+	//}
+
 	fmt.Println("\n--------  using nil for a pointer --------")
 	var b2 BStruct
 	echo = &b2
@@ -120,4 +138,5 @@ func main(){
 	time.Sleep(time.Second*2)
 	var e2 Echo
 	e2.PrintEcho() // attempt to call value without implementation
+
 }
