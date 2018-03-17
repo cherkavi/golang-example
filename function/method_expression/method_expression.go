@@ -37,7 +37,7 @@ func MethodExpression() {
 	fmt.Println("---- example of using pointer to method ---- ")
 	pointerToMethod := A.Play
 	// fmt.Printf("type of pointer: %#v\n", pointerToMethod)
-	for _, each := range []A{A{"name1"}, A{"name2"}, A{"name3"}, A{"name4"}} {
+	for _, each := range []A{A{"name1"}, A{"name2"}, A{"name3"}} {
 		// execute method against each element
 		pointerToMethod(each)
 	}
