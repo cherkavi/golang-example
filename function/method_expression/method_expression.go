@@ -2,7 +2,6 @@ package method_expression
 
 import (
 	"fmt"
-	"reflect"
 )
 
 type IPlay interface {
@@ -29,20 +28,13 @@ func (b B) Play() {
 }
 
 func MethodExpression() {
-	objectA := A{}
-	objectB := B{}
 	fmt.Println("---- example of using interface ----  ")
-	var musicTools []IPlay = []IPlay{objectA, objectB}
+	var musicTools []IPlay = []IPlay{A{}, B{}}
 	for _, eachTool := range musicTools {
 		eachTool.Play()
 	}
 
-	pointerA := &A{}
-	pointerPlay := pointerA.Play
-	fmt.Printf("type of pointer to Play method: %#v\n", reflect.TypeOf(pointerPlay))
-	fmt.Printf("value of pointer to Play method %v \n", pointerPlay)
-	fmt.Printf("value of pointer to object: %v \n", pointerA)
-
+	fmt.Println("---- example of using pointer to method ---- ")
 	pointerToMethod := A.Play
 	// fmt.Printf("type of pointer: %#v\n", pointerToMethod)
 	for _, each := range []A{A{"name1"}, A{"name2"}, A{"name3"}, A{"name4"}} {
