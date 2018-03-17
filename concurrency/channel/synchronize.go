@@ -1,11 +1,11 @@
 package channel
 
 import (
-	"sync"
-	"runtime"
 	"bytes"
-	"strconv"
 	"fmt"
+	"runtime"
+	"strconv"
+	"sync"
 	"time"
 )
 
@@ -18,34 +18,37 @@ func getGID() uint64 {
 	return n
 }
 
-type Bucket struct{
+type Bucket struct {
 	value int
 }
 
-func increaseBucket(mutex *sync.Mutex, bucket *Bucket){
+func increaseBucket(mutex *sync.Mutex, bucket *Bucket) {
 	mutex.Lock()
-	defer mutex.Unlock()
+	defer func() {
+		mutex.Unlock()
+		runtime.Gosched() // equals Thread.currentThread().yield()
+	}()
 
-	bucket.value+=1
+	bucket.value++
 	fmt.Printf("Thread:%v   Bucket.Value: %v \n", getGID(), bucket.value)
+
+	time.Sleep(time.Millisecond * 150) // move it inside method above
 }
 
-
-func increaseBucketTimes(mutex *sync.Mutex, bucket *Bucket, times int){
-	for index:=0;index<times;index++{
+func increaseBucketTimes(mutex *sync.Mutex, bucket *Bucket, times int) {
+	for index := 0; index < times; index++ {
 		increaseBucket(mutex, bucket)
-		time.Sleep(time.Millisecond*150) // move it inside method above
 	}
 }
 
-func MutexUsing(){
-	bucket:=Bucket{0}
-	mutex:=sync.Mutex{}
+func MutexUsing() {
+	bucket := Bucket{0}
+	mutex := sync.Mutex{}
 
 	// mutex and bucket must be sent into procedure using pointers
 	go increaseBucketTimes(&mutex, &bucket, 15)
 	go increaseBucketTimes(&mutex, &bucket, 15)
 	go increaseBucketTimes(&mutex, &bucket, 15)
 
-	time.Sleep(time.Second*4)
+	time.Sleep(time.Second * 4)
 }
