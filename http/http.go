@@ -11,9 +11,9 @@ import (
 	"golang.org/x/net/html/charset"
 )
 
-func panicIfError(error interface{}, template string) {
-	if error != nil {
-		panic(fmt.Sprintf(template, error))
+func panicIfError(errorObject error, template string) {
+	if errorObject != nil {
+		panic(fmt.Sprintf(template, errorObject.Error()))
 	}
 }
 
