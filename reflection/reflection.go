@@ -2,12 +2,14 @@ package main
 
 import (
 	"fmt"
+	"reflect"
+
 	"./copy"
-	"./struct_analyser"
 	"./equals"
+	"./struct_analyser"
 )
 
-func main(){
+func main() {
 	fmt.Println("\n ---------- example of copy data from one struct to another ----")
 	copy.ReflectCopy()
 
@@ -16,4 +18,8 @@ func main(){
 
 	fmt.Println("\n ---------- example of equality  ----")
 	equals.Equals()
+
+	fmt.Println("\n ---------- type of element  ----")
+	movie := copy.Movie{"Star Wars", 1979}
+	fmt.Printf("%#v    type is: %v \n", movie, reflect.TypeOf(movie))
 }
