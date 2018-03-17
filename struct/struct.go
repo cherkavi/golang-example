@@ -95,10 +95,10 @@ func main() {
 	r := Rectangle{P1: Point{1, 2}, P2: Point{3, 4}}
 	Printf("rectangle: %#v \n", r)
 
-	pixel1 := Pixel{}
-	pixel1.Left = 3
-	pixel1.Right = 5
-	pixel1.Color = "red"
+	pixel1 := Pixel{Point{3, 5}, "red"}
+	// pixel1.Left = 3
+	// pixel1.Right = 5
+	// pixel1.Color = "red"
 	Println("Embedded struct: ", pixel1)
 
 	p1 := Point{1, 2}
