@@ -10,6 +10,8 @@ import (
 
 	// example of import with side-effect ( function "init" will be executed )
 	_ "./inner3"
+
+	"./method_expression"
 )
 
 func privateFunctionWithoutReturnValue() {
@@ -28,7 +30,7 @@ func privateFunctionSwap2(x, y string) (b, a string) {
 func closureExample(magicNumber int) func(koef int) int {
 	var summator = magicNumber
 	return func(a int) int {
-		summator +=a
+		summator += a
 		return summator
 	}
 }
@@ -55,7 +57,7 @@ func main() {
 
 	var closureFunction = closureExample(2)
 
-	for _, value := range []int{3,4,5,6,7,8,9}{
+	for _, value := range []int{3, 4, 5, 6, 7, 8, 9} {
 		closureFunction(value)
 		closureFunction(value)
 	}
@@ -67,4 +69,6 @@ func main() {
 
 	a := executeFunction(closureFunction2)
 	fmt.Println("result from function where parameter was another function ", a)
+
+	method_expression.MethodExpression()
 }
