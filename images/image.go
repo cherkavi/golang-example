@@ -22,7 +22,8 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	defer tempFile.Close()
 	png.Encode(tempFile, canvas)
 	fmt.Println(tempFile.Name())
-	tempFile.Close()
+
 }
