@@ -49,7 +49,7 @@ func readXmlFromUrl(url string) SlideShow {
 
 	decoder := xml.NewDecoder(dataReader)
 	decoder.CharsetReader = charset.NewReaderLabel
-	//charsetReader, error := decoder.CharsetReader("us-ascii", dataReader)
+
 	var slideShow = SlideShow{}
 	error := decoder.Decode(&slideShow)
 	if error != nil {
