@@ -30,4 +30,7 @@ func main() {
 
 	fmt.Println("--- goroutines with parameters ---")
 	simple.ExecuteWithParameter()
+
+	fmt.Println("--- using channel as notificator ---")
+	channel.SpreadSignals()
 }
