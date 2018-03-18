@@ -21,8 +21,8 @@ func changeFirstElement(data []int, newValue int) {
 }
 
 func main() {
-	// var originalData = []int{7, 8, 9, 10, 11}
-	var originalData = make([]int, 5, 10)
+	var originalData = []int{7, 8, 9, 10, 11}
+	// var originalData = make([]int, 5, 10)
 	originalData = append(originalData, 7, 8, 9, 10, 11)
 
 	fmt.Printf("\n---- part of slices ---- \n")
@@ -71,4 +71,10 @@ func main() {
 	sliceInfo(originalData)
 	changeFirstElement(originalData[2:], -97)
 	sliceInfo(originalData)
+
+	fmt.Printf("\n---- slice elements over 'len' under 'cap' ---- \n")
+	originalData = make([]int, 0, 10)
+	originalData = append(originalData, 1, 2, 3, 4, 5)
+	sliceInfo(originalData)
+	sliceInfo(originalData[0:cap(originalData)])
 }
