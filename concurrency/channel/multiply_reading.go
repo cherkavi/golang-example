@@ -23,6 +23,10 @@ func waitingForFirstSignal(a, b, c <-chan string) {
 		{
 			fmt.Printf("from channel 'c': %v\n", data)
 		}
+	case <-time.After(20 * time.Second): // timeout after 20 seconds
+		{
+			fmt.Println("!!!Timeout!!!")
+		}
 		// uncomment next block and "select" will not wait
 		//default: {
 		//	fmt.Println("no wait, no data from channels")
