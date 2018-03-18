@@ -61,10 +61,12 @@ func main() {
 	fmt.Printf("\n ---- different types, function as a type ---- \n")
 
 	var arrayExample = [5]uint64{10, 11, 12, 13, 14}
+	// arrayExample = append(arrayExample, 15) - not applicable for arrays
 	fmt.Printf("Array declaration: %#v\n", arrayExample)
 
 	var sliceExample = []uint64{10, 11, 12, 13}
-	fmt.Printf("Slice declaration: %#v\n", sliceExample)
+	sliceExample = append(sliceExample, 14, 15) // append example
+	fmt.Printf("Slice declaration: %v\n", sliceExample[2:])
 
 	var customFunction = func(x int) int {
 		return x + 1
