@@ -6,16 +6,21 @@ import (
 	"time"
 )
 
-func waitingForSignal(a,b,c <-chan string){
+// waiting first data from one of the channel
+// channels declared as read-only
+func waitingForFirstSignal(a, b, c <-chan string) {
 	var data string
-	select{ // with "default" section - non-blocking waiting
-		case data = <-a :{
+	select { // with "default" section - non-blocking waiting
+	case data = <-a:
+		{
 			fmt.Printf("from channel 'a': %v\n", data)
 		}
-		case data = <-b :{
+	case data = <-b:
+		{
 			fmt.Printf("from channel 'b': %v\n", data)
 		}
-		case data = <-c :{
+	case data = <-c:
+		{
 			fmt.Printf("from channel 'c': %v\n", data)
 		}
 		// uncomment next block and "select" will not wait
@@ -25,18 +30,18 @@ func waitingForSignal(a,b,c <-chan string){
 	}
 }
 
-func pushDataRandomly(channels ... chan<- string) {
-	channels[rand.Intn(len(channels))]<- time.Now().Format(time.Kitchen)
+func pushDataRandomly(channels ...chan<- string) {
+	channels[rand.Intn(len(channels))] <- time.Now().Format(time.Kitchen)
 }
 
-func WaitingAndReadingFromMultiplySources(){
+func WaitingAndReadingFromMultiplySources() {
 	a := make(chan string)
 	b := make(chan string)
 	c := make(chan string)
 
-	go waitingForSignal(a,b,c)
-	go pushDataRandomly(a,b,c)
+	go waitingForFirstSignal(a, b, c)
+	go pushDataRandomly(a, b, c)
 
-	time.Sleep(time.Second*1)
+	time.Sleep(time.Second * 1)
 	fmt.Println()
 }
