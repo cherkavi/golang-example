@@ -1,14 +1,26 @@
 package main
 
 import (
-	"./constants"
 	"fmt"
+
+	"./constants"
 )
 
-
-func changeOuterVariable(external *int){
-	*external= *external + 22
+func changeOuterVariable(external *int) {
+	*external = *external + 22
 }
+
+const privateVisibleInt uint64 = 9999999999999999
+
+// int, int8, int16, int32, int64
+// uint, uint8, uint16, uint32, uint64, uintptr
+
+// byte
+// rune - unicode representation
+
+// float32, float64
+
+// complex64, complex128
 
 func main() {
 	// declare variable with default value
