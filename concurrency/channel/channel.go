@@ -32,7 +32,7 @@ func pingPong(marker string, channel chan Flag) {
 		flag.value = !flag.value
 
 		// example of non-blocking sending ( the same for reading )
-	label:
+	StartOfWaitingSignal:
 		select {
 		case channel <- flag:
 			fmt.Printf(" %v\n", flag)
@@ -40,7 +40,7 @@ func pingPong(marker string, channel chan Flag) {
 			// can't send - waiting
 			time.Sleep(time.Millisecond * 50)
 			fmt.Print("*")
-			goto label
+			goto StartOfWaitingSignal
 		}
 	}
 }
