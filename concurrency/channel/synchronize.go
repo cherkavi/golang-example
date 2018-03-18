@@ -33,7 +33,7 @@ func increaseBucket(mutex *sync.Mutex, bucket *Bucket) {
 	bucket.value++
 	fmt.Printf("Thread:%v   Bucket.Value: %v \n", getGID(), bucket.value)
 
-	time.Sleep(time.Millisecond * 150) // move it inside method above
+	time.Sleep(time.Millisecond * 100) // move it inside method above
 }
 
 func increaseBucketTimes(mutex *sync.Mutex, bucket *Bucket, times int) {
@@ -47,9 +47,10 @@ func MutexUsing() {
 	mutex := sync.Mutex{}
 
 	// mutex and bucket must be sent into procedure using pointers
-	go increaseBucketTimes(&mutex, &bucket, 15)
-	go increaseBucketTimes(&mutex, &bucket, 15)
-	go increaseBucketTimes(&mutex, &bucket, 15)
+	go increaseBucketTimes(&mutex, &bucket, 5)
+	go increaseBucketTimes(&mutex, &bucket, 5)
+	go increaseBucketTimes(&mutex, &bucket, 5)
 
-	time.Sleep(time.Second * 4)
+	time.Sleep(time.Second * 3)
+	fmt.Println()
 }
