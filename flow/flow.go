@@ -27,6 +27,7 @@ func main() {
 	}
 	fmt.Println()
 
+	fmt.Println("---- switch fallthrough feature ---- ")
 	switch controlValue := 10; controlValue { // variable 'controlValue' visible into inner scope only
 	case 9, 10, 11, 12:
 		fmt.Println("case when controlValue == [9..12]")
@@ -47,7 +48,6 @@ func main() {
 	}
 	fmt.Println()
 
-	fmt.Println("switch fallthrough feature ")
 	switch controlValue := 21; { // variable 'controlValue' visible into inner scope only
 	default:
 		fmt.Println("other cases ")
@@ -69,6 +69,7 @@ func main() {
 
 	fmt.Printf("print Type: %v  \n", printType(10))
 
+	fmt.Printf("\n---- FOR loop ---- \n")
 	for i := 1; i < 5; i++ {
 		fmt.Printf("%v ", i)
 	}
@@ -77,4 +78,15 @@ func main() {
 	for index, value := range []int{5, 7, 9, 13, 17} {
 		fmt.Printf("index: %v,  value: %v\n", index, value)
 	}
+	fmt.Println()
+
+	fmt.Println("---- example of infinite loop with GOTO operator ")
+	i := 10
+	for {
+		fmt.Printf("%v ", i)
+		goto EndLabel
+	}
+EndLabel:
+	fmt.Println()
+
 }
