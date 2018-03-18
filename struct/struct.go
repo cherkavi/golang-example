@@ -9,6 +9,10 @@ type Point struct {
 	Right int
 }
 
+func newPoint() *Point {
+	return new(Point)
+}
+
 // new function of struct, read-only access
 func (p Point) sum() int {
 	return p.Left + p.Right
@@ -107,7 +111,10 @@ func main() {
 		Left  int
 		Right int
 	}{1, 2}
-	Printf("point#1:%p %#v  point#2:%p %#v  point#3:%p %#v   point#1==point#2:%v   point#1==point#3:%v\n ", &p1, p1, &p2, p2, &p3, p3, p1 == p2, p1 == p3)
+	p4 := newPoint()
+	p4.Left = 1
+	p4.Right = 2
+	Printf("point#1:%p %#v  point#2:%p %#v  point#3:%p %#v  point#4: %p %#v  point#1==point#2:%v   point#1==point#3:%v   point#1==point#4:%v \n ", &p1, p1, &p2, p2, &p3, p3, p4, p4, p1 == p2, p1 == p3, p1 == *p4)
 
 	Printf("Empty struct (empty object ): %#v\n", struct{}{})
 }
