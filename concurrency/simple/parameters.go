@@ -33,5 +33,5 @@ func ExecuteWithParameter() {
 	message = "changed message"
 	fmt.Printf("message after start goroutine: %v \n", message)
 	time.Sleep(time.Second * 2)
-
+	fmt.Println()
 }
