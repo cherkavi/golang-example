@@ -77,4 +77,8 @@ func main() {
 	originalData = append(originalData, 1, 2, 3, 4, 5)
 	sliceInfo(originalData)
 	sliceInfo(originalData[0:cap(originalData)])
+
+	fmt.Printf("\n---- concantenate slices ---- \n")
+	anotherData := []int{9, 8, 7, 6, 5}
+	sliceInfo(append(originalData, anotherData[:2]...))
 }
