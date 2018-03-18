@@ -102,5 +102,5 @@ func main() {
 	xRune = rune(xInt)
 	fmt.Printf("convert overload example: %#v    %#v    %#v \n", xFloat, xInt, xRune)
 
-	fmt.Printf("convert int to string: %v ", strconv.Itoa(int(xInt)))
+	fmt.Printf("convert int to string: %v \n", strconv.Itoa(int(xInt)))
 }
