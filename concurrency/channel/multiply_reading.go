@@ -19,7 +19,7 @@ func waitingForFirstSignal(a, b, c <-chan string) {
 		{
 			fmt.Printf("from channel 'b': %v\n", data)
 		}
-	case data = <-c:
+	case data = <-c: // here also can be writer to another channel, not reader only  ( with allowing to write )
 		{
 			fmt.Printf("from channel 'c': %v\n", data)
 		}
