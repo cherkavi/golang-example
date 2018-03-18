@@ -53,7 +53,7 @@ func readXmlFromUrl(url string) SlideShow {
 	var slideShow = SlideShow{}
 	error := decoder.Decode(&slideShow)
 	if error != nil {
-		panic(fmt.Sprintf("can't create reader %v", error))
+		panic(fmt.Sprintf("can't create reader %v", error.Error()))
 	}
 	return slideShow
 }
