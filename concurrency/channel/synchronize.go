@@ -9,6 +9,7 @@ import (
 	"time"
 )
 
+// Thread id, goroutine id
 func getGID() uint64 { // runtime.NumGoroutine() will not return number of current goroutine
 	b := make([]byte, 64)
 	b = b[:runtime.Stack(b, false)]
