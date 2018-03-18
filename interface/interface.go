@@ -5,28 +5,30 @@ import (
 	"time"
 )
 
-type Echo interface{
+type Echo interface {
 	// just print output info
 	PrintEcho()
 }
 
 // ---- AStruct ----
-type AStruct struct{
+type AStruct struct {
 	// !!! Rule: Do not mix interface embedding with struct embedding. !!!
 	Echo // the same as field "Echo" with type "Echo" and it equals to nil
 }
-func (a AStruct) PrintEcho(){ // no 'implements' declaration need
+
+func (a AStruct) PrintEcho() { // no 'implements' declaration need
 	fmt.Printf("%#v \n", a)
 }
-func (a AStruct) String() string{
+func (a AStruct) String() string {
 	return fmt.Sprintf("override toString method")
 }
 
 // ---- BStruct ----
-type BStruct struct{
+type BStruct struct {
 }
-func (b *BStruct) PrintEcho(){ // !!! pointer implemented interface !!!
-	if b==nil{
+
+func (b *BStruct) PrintEcho() { // !!! pointer implemented interface !!!
+	if b == nil {
 		fmt.Println("!!!nil!!!")
 		return
 	}
@@ -34,17 +36,15 @@ func (b *BStruct) PrintEcho(){ // !!! pointer implemented interface !!!
 }
 
 // ---- function to execute from interface  ----
-func executeEcho(e Echo){
+func executeEcho(e Echo) {
 	e.PrintEcho()
 }
 
 // ---- interface with extension
-type EchoExtension interface{
+type EchoExtension interface {
 	Echo
 	PrintEcho2()
 }
-
-
 
 func whatTheType(i interface{}) {
 	switch v := i.(type) {
@@ -65,8 +65,7 @@ func whatTheType(i interface{}) {
 	}
 }
 
-
-func main(){
+func main() {
 	fmt.Println("-------- example of implicit implementation for struct and *struct")
 	var echo Echo
 
@@ -88,21 +87,23 @@ func main(){
 	echoInline.PrintEcho()
 
 	fmt.Println("\n-------- empty interface ---------")
-	var emptyValue interface {}
+	var emptyValue interface{}
 	emptyValue = echo
 	fmt.Println(emptyValue)
 
-	var emptyValue2 interface {} = "this is just a message"
+	var emptyValue2 interface{} = "this is just a message"
 	fmt.Println(emptyValue2)
 
-	fmt.Println("\n-------- upcasting  ---------")
-	var emptyValue3 interface {} = "string from empty interface, upcasting"
+	fmt.Println("\n-------- casting  ---------")
+	var emptyValue3 interface{} = "string from empty interface, upcasting"
 	var message string = emptyValue3.(string)
 	fmt.Println(message)
-	message, convertOk:= emptyValue3.(string)
+
+	fmt.Println("-------- instanceof, casting to type -----------")
+	message, convertOk := emptyValue3.(string)
 	if convertOk {
 		fmt.Println(message)
-	}else{
+	} else {
 		fmt.Printf("can't upcast value:%v to string, error: %v \n", message, convertOk)
 	}
 
@@ -110,7 +111,7 @@ func main(){
 	message2, convertOk := emptyValue3.(AStruct)
 	if convertOk {
 		fmt.Printf("upcast to AStruct %#v\n", message2)
-	}else{
+	} else {
 		fmt.Printf("can't upcast value:<%v> to AStruct, conversation value: %v \n", emptyValue3, convertOk)
 	}
 
@@ -135,7 +136,7 @@ func main(){
 	echo = b3
 	echo.PrintEcho()
 
-	time.Sleep(time.Second*2)
+	time.Sleep(time.Second * 2)
 	var e2 Echo
 	e2.PrintEcho() // attempt to call value without implementation
 
