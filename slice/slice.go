@@ -84,5 +84,8 @@ func main() {
 
 	fmt.Printf("\n---- remove element  ---- \n")
 	var indexForRemove = 3
-	sliceInfo(append(originalData[0:indexForRemove], originalData[indexForRemove+1:]...))
+	sliceInfo(originalData)
+	var newOriginalData = append(originalData[0:indexForRemove], originalData[indexForRemove+1:]...)
+	sliceInfo(newOriginalData)
+	sliceInfo(originalData)
 }
