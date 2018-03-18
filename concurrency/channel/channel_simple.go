@@ -20,11 +20,12 @@ func waitingForEmptyChannel(notifier chan interface{}) {
 		}
 	}
 End:
+	time.Sleep(time.Millisecond * 10)
 }
 
 func SpreadSignals() {
-	notifier := make(chan interface{}, 10)
-	messages := []string{" this is ", " message ", " from ", " goroutines "}
+	messages := []string{" this ", " is ", " message ", " from ", " goroutines ", " and ", " for ", " console "}
+	notifier := make(chan interface{}, len(messages)/3) // buffer is less than queue
 
 	// execute respective amount of goroutines
 	for _, eachMessage := range messages {
@@ -32,7 +33,8 @@ func SpreadSignals() {
 	}
 	// notify each of them about printing
 	for index := range messages {
-		notifier <- index // just send message into channel
+		notifier <- index // just send message into channel, wait when buffer is full
+		fmt.Print(">")
 	}
 
 	waitingForEmptyChannel(notifier)
