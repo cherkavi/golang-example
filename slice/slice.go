@@ -81,4 +81,8 @@ func main() {
 	fmt.Printf("\n---- concantenate slices ---- \n")
 	anotherData := []int{9, 8, 7, 6, 5}
 	sliceInfo(append(originalData, anotherData[:2]...))
+
+	fmt.Printf("\n---- remove element  ---- \n")
+	var indexForRemove = 3
+	sliceInfo(append(originalData[0:indexForRemove], originalData[indexForRemove+1:]...))
 }
