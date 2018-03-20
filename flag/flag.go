@@ -15,11 +15,14 @@ type arrayOfInt []int
 var listParam arrayOfInt
 
 func (array *arrayOfInt) Set(inputValue string) error {
+	var returnValue = arrayOfInt{}
 	for _, value := range strings.Fields(inputValue) {
 		if intValue, exception := strconv.Atoi(value); exception == nil {
-			*array = append(*array, intValue)
+			// *array = append(*array, intValue)
+			returnValue = append(returnValue, intValue)
 		}
 	}
+	*array = returnValue
 	return nil
 }
 
