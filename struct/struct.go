@@ -10,7 +10,7 @@ type Point struct {
 }
 
 func newPoint() *Point {
-	return new(Point)
+	return new(Point) // return &Point{}
 }
 
 // new function of struct, read-only access
