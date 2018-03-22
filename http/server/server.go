@@ -1,9 +1,11 @@
 package server
 
 import (
+	"bufio"
 	"fmt"
 	"log"
 	"net/http"
+	"net/url"
 	"os/exec"
 	"runtime"
 	"time"
@@ -32,11 +34,22 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "time: %v", time.Now().Format(time.RFC1123))
 }
 
+type ServerHandler struct {
+}
+
+func (h ServerHandler) ServeHTTP(response http.ResponseWriter, request *http.Request) {
+	response.WriteHeader(407)
+	var writer = bufio.NewWriter(response)
+	writer.WriteString("example of error message ")
+	writer.Flush()
+}
+
 func Example() {
 	var portNumber = 8001
 	fmt.Printf("---- start local server on port :%v \n", portNumber)
 
-	http.HandleFunc("/", rootHandler)
+	// go http.ListenAndServe(fmt.Sprintf(":%v", portNumber), ServerHandler{})
+	http.HandleFunc("/get", rootHandler)
 	go http.ListenAndServe(fmt.Sprintf(":%v", portNumber), nil)
 
 	fmt.Printf("waiting for start of the server: 127.0.0.1:%v \n", portNumber)
@@ -45,6 +58,7 @@ func Example() {
 	fmt.Println("open browser")
 	openbrowser(fmt.Sprintf("http://127.0.0.1:%v/", portNumber))
 
-	fmt.Println("sleep for 60 seconds")
-	time.Sleep(60 * time.Second)
+	fmt.Println("sleep for 10 seconds")
+	time.Sleep(10 * time.Second)
+
 }
