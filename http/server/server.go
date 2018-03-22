@@ -30,8 +30,12 @@ func openbrowser(url string) {
 
 }
 
-func rootHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "time: %v", time.Now().Format(time.RFC1123))
+func rootHandler(response http.ResponseWriter, request *http.Request) {
+	fmt.Println("request url: ", request.RequestURI)
+	urlValues, _ := url.Parse(request.RequestURI)
+	fmt.Printf("request param1: %v", urlValues.Query().Get("param1"))
+	fmt.Printf("request param2: %v", urlValues.Query().Get("param2"))
+	fmt.Fprintf(response, "time: %v", time.Now().Format(time.RFC1123))
 }
 
 type ServerHandler struct {
@@ -56,9 +60,8 @@ func Example() {
 	time.Sleep(1 * time.Second)
 
 	fmt.Println("open browser")
-	openbrowser(fmt.Sprintf("http://127.0.0.1:%v/", portNumber))
+	openbrowser(fmt.Sprintf("http://127.0.0.1:%v/get?param1='hello'&param2=10", portNumber))
 
 	fmt.Println("sleep for 10 seconds")
 	time.Sleep(10 * time.Second)
-
 }
