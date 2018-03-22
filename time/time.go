@@ -35,5 +35,7 @@ Next:
 
 	fmt.Printf("Using Date: %v \n", time.Date(2018, 3, 18, 19, 21, 00, 000, time.UTC))
 
+	var nextTimePoint time.Time = time.Now().Add(2 * time.Hour)
+	fmt.Printf("time point in 2 hours is: %v \n", nextTimePoint.Format(time.RFC1123))
 	fmt.Println()
 }
