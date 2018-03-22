@@ -27,6 +27,11 @@ func toUtf8(nonUtfData []byte) string {
 
 func readFromUrl(url string) []byte {
 	response, error := http.Get(url)
+	// client := &http.Client{}
+	// response, error := http.NewRequest("GET", url, nil)
+	// request.Header.Add("x-user", "cherkavi")
+	// response, error := client.Do(req)
+
 	panicIfError(error, "can't read from remote source %v")
 	defer response.Body.Close()
 
