@@ -16,6 +16,7 @@ func httpRawRequest(remoteUrl string) {
 	}
 	defer connection.Close()
 
+	connection.SetDeadline(time.Now().Add(time.Second * 2))
 	fmt.Println("    write data into socket >>> ")
 	fmt.Fprintf(connection, "GET / HTTP/1.0\r\n\r\n")
 
