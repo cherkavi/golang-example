@@ -17,4 +17,7 @@ func main() {
 	val = creational.GetSingletonInstance()
 	fmt.Printf("Singleton: %#v     %p\n", creational.GetSingletonInstance(), &val)
 	val = creational.GetSingletonInstance()
+
+	fmt.Println("Creational: Builder")
+	creational.Builder()
 }
