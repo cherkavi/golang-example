@@ -23,7 +23,8 @@ func writeDataIntoFile(path string) {
 	defer file.Close()
 
 	writer := bufio.NewWriter(file)
-	writer.WriteString("this is string for file ")
+	writer.WriteString("this is string for file \n")
+	writer.WriteString("another line for file \n")
 	writer.Flush()
 }
 
@@ -40,8 +41,10 @@ func readDataFromFile(path string) {
 	defer file.Close()
 
 	scanner := bufio.NewScanner(bufio.NewReader(file))
-	scanner.Scan()
-	fmt.Printf("File content: %v \n", scanner.Text())
+
+	for scanner.Scan() {
+		fmt.Printf("next line from file : %v \n", scanner.Text())
+	}
 }
 
 func printStatistic(file *os.File) {
