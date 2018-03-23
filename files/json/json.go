@@ -32,6 +32,7 @@ func Example() {
 	fmt.Printf("> original data: %v\n", person)
 
 	data, _ := json.Marshal(person)
+	// json.NewEncoder
 	fmt.Println("> write data into file ")
 	ioutil.WriteFile(file.Name(), data, 666)
 
