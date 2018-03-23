@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 
-	"./WorkingWithFile"
+	"./workingwithfile"
 )
 
 func main() {
 	fmt.Println("---- working with files ---- ")
-	WorkingWithFile.FileOperations()
+	workingwithfile.FileOperations()
 }

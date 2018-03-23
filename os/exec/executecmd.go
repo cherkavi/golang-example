@@ -3,6 +3,7 @@ package exec
 import (
 	"fmt"
 	"log"
+	"os"
 	"os/exec"
 	"runtime"
 )
@@ -23,5 +24,13 @@ func Openbrowser(url string) {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
 
+// execute "command" with "parameters"
+// output to current output
+func ExecuteCommandAndOutput(command string, parameters ...string) {
+	cmd := exec.Command(command, parameters...)
+	cmd.Stdout = os.Stdout
+	cmd.Run()
+	fmt.Println()
 }
