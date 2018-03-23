@@ -3,10 +3,18 @@ package main
 import (
 	"fmt"
 
-	. "./creational"
+	"./creational"
 )
 
 func main() {
 	fmt.Println(" Creational: Factory method ")
-	FactoryMethod()
+	creational.FactoryMethod()
+
+	val := creational.GetSingletonInstance()
+	fmt.Printf("Singleton: %#v     %p\n", creational.GetSingletonInstance(), &val)
+	val = creational.GetSingletonInstance()
+	fmt.Printf("Singleton: %#v     %p\n", creational.GetSingletonInstance(), &val)
+	val = creational.GetSingletonInstance()
+	fmt.Printf("Singleton: %#v     %p\n", creational.GetSingletonInstance(), &val)
+	val = creational.GetSingletonInstance()
 }
