@@ -31,7 +31,7 @@ func startUdpListener(portNumber int) {
 	}
 }
 
-func writeUdpPackage(host string, portNumber int, data []byte) {
+func sendUdpPackage(host string, portNumber int, data []byte) {
 	remoteAddress, err := net.ResolveUDPAddr("udp", fmt.Sprintf("%v:%v", host, portNumber))
 	panicWhenError(err)
 
@@ -50,7 +50,7 @@ func writeUdpPackage(host string, portNumber int, data []byte) {
 func Example() {
 	go startUdpListener(9000)
 	for i := 0; i < 3; i++ {
-		writeUdpPackage("127.0.0.1", 9000, []byte(time.Now().Format(time.RFC1123)))
+		sendUdpPackage("127.0.0.1", 9000, []byte(time.Now().Format(time.RFC1123)))
 	}
 	time.Sleep(time.Second * 10)
 }
