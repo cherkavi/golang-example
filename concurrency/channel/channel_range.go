@@ -9,7 +9,7 @@ import (
 func writeIn(destination chan<- string) {
 	for i := 0; i < 10; i++ {
 		data := fmt.Sprintf("%v", i)
-		fmt.Printf(" w->%v- ", data)
+		fmt.Printf(" w->[%v] ", data)
 		destination <- data
 	}
 	close(destination)
@@ -17,8 +17,8 @@ func writeIn(destination chan<- string) {
 
 // using usual channel as readonly channel
 func readFrom(source <-chan string) {
-	for msg := range source { // read until channel will be closed
-		fmt.Printf(" %v->r ", msg)
+	for msg := range source { // block and waiting for next message, read until channel will be closed
+		fmt.Printf(" [%v]->r ", msg)
 	}
 }
 
