@@ -17,7 +17,7 @@ func writeIn(destination chan<- string) {
 
 // using usual channel as readonly channel
 func readFrom(source <-chan string) {
-	for msg := range source {
+	for msg := range source { // read until channel will be closed
 		fmt.Printf(" %v->r ", msg)
 	}
 }
