@@ -3,6 +3,7 @@ package once
 import (
 	"fmt"
 	"sync"
+	"time"
 )
 
 var once = sync.Once{}
@@ -18,5 +19,5 @@ func Example() {
 			once.Do(onceFunc)
 		}()
 	}
-
+	time.Sleep(time.Second * 2)
 }
