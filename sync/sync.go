@@ -6,6 +6,7 @@ import (
 	"./mutex"
 	"./once"
 	"./rwmutex"
+	"./waitgroup"
 )
 
 func main() {
@@ -17,4 +18,8 @@ func main() {
 
 	fmt.Println("---- example of Once (execute func only once) ----")
 	once.Example()
+
+	fmt.Println("---- example of WaitGroup (waiting all members of group to be finished) ----")
+	waitgroup.Example()
+
 }
