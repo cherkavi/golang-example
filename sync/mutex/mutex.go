@@ -9,7 +9,7 @@ import (
 func increaseWithoutLock(data *int32) {
 	*data++
 	fmt.Printf("%v\n", *data)
-	time.Sleep(time.Millisecond * 200)
+	time.Sleep(time.Millisecond * 100)
 }
 
 func increaseWithLock(data *int32, mutex sync.Locker) {
@@ -34,12 +34,12 @@ func Example() {
 	data = 0
 	mutex := sync.Mutex{} // implementation of interface sync.Locker
 	fmt.Println("> execute with lock ")
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 5; i++ {
 		go func() {
 			for j := 0; j < 5; j++ {
 				increaseWithLock(&data, &mutex)
 			}
 		}()
 	}
-	time.Sleep(time.Second * 2)
+	time.Sleep(time.Second * 3)
 }
