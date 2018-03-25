@@ -19,6 +19,9 @@ func main() {
 	fmt.Println("--- parallel threads execution ---")
 	channel.PingPong()
 
+	fmt.Println("--- example of timer based on select ---")
+	channel.ExampleSelectTimer()
+
 	fmt.Println("--- using range to read from channel ---")
 	channel.RangeAllFromChannel()
 
