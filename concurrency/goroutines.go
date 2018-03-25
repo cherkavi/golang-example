@@ -25,6 +25,9 @@ func main() {
 	fmt.Println("--- pattern ChannelGenerator ---")
 	channel.ExampleOfChannelGenerator()
 
+	fmt.Println("--- pattern ChannelPipeline ---")
+	channel.ExampleChannelPipeline()
+
 	fmt.Println("--- merge channels ---")
 	channel.ExampleOfMerge()
 
