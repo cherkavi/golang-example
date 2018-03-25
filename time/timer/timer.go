@@ -34,5 +34,7 @@ func Example() {
 			goto Next
 		}
 	}
+	// shortcut (without select, case... ):  <-time.After(100 * time.Millisecond)
+
 Next:
 }
