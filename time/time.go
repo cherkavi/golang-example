@@ -11,7 +11,9 @@ func main() {
 	fmt.Println("---- example of print data/time with format ")
 	format.Example()
 
-	fmt.Println("---- example of print data/time with format ")
+	fmt.Println("---- example of using timer ")
 	timer.Example()
 
+	fmt.Println("---- example of using ticker ")
+	timer.ExampleTicker()
 }
