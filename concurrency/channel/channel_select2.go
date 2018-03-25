@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func executeTimer(duration time.Duration, stopChannel <-chan bool, resetChannel <-chan time.Duration) {
+func executeTimer(duration time.Duration, stopChannel <-chan struct{}, resetChannel <-chan time.Duration) {
 	timerDuration := duration
 MainLoop:
 	for {
@@ -22,8 +22,11 @@ MainLoop:
 	}
 }
 
+type Signal struct {
+}
+
 func ExampleSelectTimer() {
-	stopChannel := make(chan bool)
+	stopChannel := make(chan struct{})
 	resetChannel := make(chan time.Duration)
 
 	fmt.Println("> execute controlled via channels timer ")
@@ -35,6 +38,6 @@ func ExampleSelectTimer() {
 
 	time.Sleep(time.Second * 2)
 	fmt.Println(" stop timer: ")
-	stopChannel <- true
+	stopChannel <- Signal{}
 
 }
