@@ -19,7 +19,7 @@ func TestAddingSkipped(t *testing.T) {
 	t.Log("this line will appear only when error happend ")
 	if add(2, 3) != 4 {
 		t.Errorf("expected 4 but [%v] ", add(2, 3))
-		// t.Fatal("test stopped")
+		// t.Fatal("test stopped") - will stop execution
 	}
 }
 
