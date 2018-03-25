@@ -22,9 +22,6 @@ MainLoop:
 	}
 }
 
-type Signal struct {
-}
-
 func ExampleSelectTimer() {
 	stopChannel := make(chan struct{})
 	resetChannel := make(chan time.Duration)
@@ -38,6 +35,6 @@ func ExampleSelectTimer() {
 
 	time.Sleep(time.Second * 2)
 	fmt.Println(" stop timer: ")
-	stopChannel <- Signal{}
+	stopChannel <- struct{}{}
 
 }
