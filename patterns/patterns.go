@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"./behavior"
 	"./creational"
 )
 
@@ -20,4 +21,7 @@ func main() {
 
 	fmt.Println("Creational: Builder")
 	creational.Builder()
+
+	fmt.Println("Behavior: ChainOfResponsibilities")
+	behavior.ChaineOfResponsibilities()
 }

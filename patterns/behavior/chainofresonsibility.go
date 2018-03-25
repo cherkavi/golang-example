@@ -6,7 +6,7 @@ import (
 	"../../concurrency/channel"
 )
 
-func main() {
+func ChaineOfResponsibilities() {
 	fmt.Println("---- channel pipeline, GOG chain of responsibilities  ")
 	channel.ExampleChannelPipeline()
 }
