@@ -7,13 +7,14 @@ import (
 
 func executeTimer(duration time.Duration, stopChannel <-chan bool, resetChannel <-chan time.Duration) {
 	timerDuration := duration
+MainLoop:
 	for {
 		select {
 		case <-time.After(duration):
 			fmt.Println("timer ")
 		case <-stopChannel:
 			fmt.Println("timer stop")
-			break
+			break MainLoop // just a break will exit from "select" block
 		case timerDuration = <-resetChannel:
 			fmt.Printf("timer was changed to : %v \n", timerDuration)
 			continue

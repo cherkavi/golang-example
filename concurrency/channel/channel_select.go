@@ -41,7 +41,7 @@ func pingPong(marker string, channel chan Flag) {
 			// 	// can't send - waiting
 			// 	time.Sleep(time.Millisecond * 50)
 			// 	fmt.Print("*")
-			// 	goto StartOfWaitingSignal
+			// 	goto StartOfWaitingSignal // don't use "break" - it will break only current "select" block
 		}
 	}
 }
