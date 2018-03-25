@@ -16,10 +16,13 @@ func instanceof(v interface{}) { // input parameter - empty interface
 	}
 	fmt.Printf("typeOf: [%#v] is [%v] \n", v, typeOf)
 
+	// first law of reflection: reflect.ValueOf(v)
 	valueOf := reflect.ValueOf(v)
 	if valueOf.Kind() == reflect.Int {
+		// second law of reflection: valueOf.Interface()
 		fmt.Println("integer value detected: ", valueOf.Interface().(int)) // convert to real value and upcast
 	}
+	// third law of reflection: valueOf.CanSet()
 	fmt.Printf("valueOf: [%#v] is [%v] by type [%v] is changable: [%v] \n", v, valueOf, valueOf.Type(), valueOf.CanSet())
 	// fmt.Println("Elements: ", valueOf.Elem())
 	// see patterns/creational/builder.go
