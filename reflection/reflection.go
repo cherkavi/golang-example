@@ -30,6 +30,16 @@ func instanceof(v interface{}) { // input parameter - empty interface
 	fmt.Println()
 }
 
+func isValidPointer(v interface{}) bool {
+	valueOf := reflect.ValueOf(v)
+	if valueOf.Kind() != reflect.Ptr || valueOf.IsNil() {
+		return false
+	} else {
+		// it is not nil and pointer
+		return true
+	}
+}
+
 // see https://blog.golang.org/laws-of-reflection
 func main() {
 	fmt.Println("\n ---------- example of copy data from one struct to another ----")
