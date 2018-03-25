@@ -22,6 +22,9 @@ func main() {
 	fmt.Println("--- example of timer based on select ---")
 	channel.ExampleSelectTimer()
 
+	fmt.Println("--- pattern ChannelGenerator ---")
+	channel.ExampleOfChannelGenerator()
+
 	fmt.Println("--- using range to read from channel ---")
 	channel.RangeAllFromChannel()
 
