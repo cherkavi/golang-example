@@ -25,6 +25,9 @@ func main() {
 	fmt.Println("--- pattern ChannelGenerator ---")
 	channel.ExampleOfChannelGenerator()
 
+	fmt.Println("--- merge channels ---")
+	channel.ExampleOfMerge()
+
 	fmt.Println("--- using range to read from channel ---")
 	channel.RangeAllFromChannel()
 
