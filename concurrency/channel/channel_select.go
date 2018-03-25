@@ -32,15 +32,16 @@ func pingPong(marker string, channel chan Flag) {
 		flag.value = !flag.value
 
 		// example of non-blocking sending ( the same for reading )
-	StartOfWaitingSignal:
+		// StartOfWaitingSignal:
 		select {
-		case channel <- flag:
+		case channel <- flag: // if channel is not buffered - just waiting for a flag,
+			// if it is buffered - uncomment code below
 			fmt.Printf(" %v\n", flag)
-		default:
-			// can't send - waiting
-			time.Sleep(time.Millisecond * 50)
-			fmt.Print("*")
-			goto StartOfWaitingSignal
+			// default: // using this block for buffered channel only !!!!
+			// 	// can't send - waiting
+			// 	time.Sleep(time.Millisecond * 50)
+			// 	fmt.Print("*")
+			// 	goto StartOfWaitingSignal
 		}
 	}
 }
@@ -48,7 +49,7 @@ func pingPong(marker string, channel chan Flag) {
 func PingPong() {
 	// readonly  channel: make(<-chan Flag)
 	// writeonly channel: make(chan<- Flag)
-	sharedChannel := make(chan Flag)
+	sharedChannel := make(chan Flag) // using buffered channnel: make(chan Flag, 100)
 	go pingPong("1", sharedChannel)
 	go pingPong("2", sharedChannel)
 	sharedChannel <- Flag{name: "ball", value: true}
