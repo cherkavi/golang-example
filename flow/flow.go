@@ -29,6 +29,7 @@ func main() {
 
 	fmt.Println("---- switch fallthrough feature ---- ")
 	switch controlValue := 10; controlValue { // variable 'controlValue' visible into inner scope only
+	// case 15: // just empty case
 	case 9, 10, 11, 12:
 		fmt.Println("case when controlValue == [9..12]")
 	case 0:
