@@ -32,7 +32,8 @@ func merge(cs ...<-chan int) <-chan int {
 	return out
 }
 
-// Fan In - Fan Out
+// Fan-in: multiply channels is accumulated into one channel
+// Fan-out: one channel is distributed into multiple channels
 func ExampleOfMerge() {
 	fmt.Println("---- merge data from different channels ")
 
