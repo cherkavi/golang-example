@@ -5,7 +5,7 @@ import (
 )
 
 func printType(v interface{}) string {
-	switch v.(type) {
+	switch v.(type) { // return type of element
 	case int:
 		return "int"
 	case float32:
