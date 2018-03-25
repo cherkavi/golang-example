@@ -7,6 +7,6 @@ import (
 )
 
 func ChaineOfResponsibilities() {
-	fmt.Println("---- channel pipeline, GOG chain of responsibilities  ")
+	fmt.Println("---- channel pipeline, GOF chain of responsibilities  ")
 	channel.ExampleChannelPipeline()
 }
