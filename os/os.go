@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"./signal"
+	"./std"
 	"./workingwithfile"
 )
 
@@ -12,6 +13,10 @@ func main() {
 	workingwithfile.FileOperations()
 	fmt.Println()
 
+	fmt.Println("---- read data from console ")
+	std.ExampleOfReadingText()
+
 	fmt.Println("---- catch signals from OS  ---- ")
 	signal.ExampleOfSignalHook()
+
 }
