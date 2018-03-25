@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func sliceInfo(data []int) {
 	fmt.Printf("address=%p  len=%v  capacity=%v  data=%v  representation:%#v  \n", data, len(data), cap(data), data, data)
@@ -88,4 +91,43 @@ func main() {
 	var newOriginalData = append(originalData[0:indexForRemove], originalData[indexForRemove+1:]...)
 	sliceInfo(newOriginalData)
 	sliceInfo(originalData)
+
+	fmt.Printf("\n---- remove element  ---- \n")
+	intSlice := []int{5, 4, 3, 1, 2}
+	fmt.Printf("before sorting: %v \n", intSlice)
+	sort.Ints(intSlice)
+	fmt.Printf("after sorting: %v \n", intSlice)
+
+	strSlice := []string{"b", "c", "a", "e"}
+	fmt.Printf("before sorting: %v \n", strSlice)
+	sort.Strings(strSlice)
+	fmt.Printf("after sorting: %v \n", strSlice)
+
+	dataArray := DataArray{[]Data{Data{"d"}, Data{"b"}, Data{"a"}, Data{"c"}}}
+	fmt.Printf("before sorting: %v \n", dataArray)
+	sort.Sort(dataArray)
+	fmt.Printf("after sorting: %v \n", dataArray)
+}
+
+type Data struct {
+	name string
+}
+type DataArray struct {
+	elements []Data
+}
+
+// Len is the number of elements in the collection.
+func (d DataArray) Len() int {
+	return len(d.elements)
+}
+
+// Less reports whether the element with
+// index i should sort before the element with index j.
+func (d DataArray) Less(i, j int) bool {
+	return d.elements[i].name < d.elements[j].name
+}
+
+// Swap swaps the elements with indexes i and j.
+func (d DataArray) Swap(i, j int) {
+	d.elements[i].name, d.elements[j].name = d.elements[j].name, d.elements[i].name
 }
