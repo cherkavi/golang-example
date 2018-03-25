@@ -8,7 +8,7 @@ import (
 	// example of import with alias
 	f "./inner2"
 
-	// example of import with side-effect ( function "init" will be executed )
+	// example of import with side-effect ( function "init" will be executed without using any elements from that package )
 	_ "./inner3"
 
 	"./method_expression"
