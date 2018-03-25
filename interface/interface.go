@@ -100,8 +100,12 @@ func main() {
 
 	fmt.Println("\n-------- casting  ---------")
 	var emptyValue3 interface{} = "string from empty interface, upcasting"
-	var message string = emptyValue3.(string)
-	fmt.Println(message)
+	message, ok := emptyValue3.(string) // convert to specific type with checking
+	if ok {
+		fmt.Println(message)
+	} else {
+		fmt.Println("interface is not belong to 'string' type ")
+	}
 
 	fmt.Println("-------- instanceof, casting to type -----------")
 	message, convertOk := emptyValue3.(string)
