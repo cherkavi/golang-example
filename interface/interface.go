@@ -42,8 +42,12 @@ func executeEcho(e Echo) {
 
 // ---- interface with extension
 type EchoExtension interface {
-	Echo
-	PrintEcho2()
+	Echo                       // extension of the interface
+	GetProperty(string) string // shortcut for declaration - without name of parameter
+}
+
+func (b BStruct) GetProperty(string) string { // name of parameter is not appear - will not be used
+	return "hard-coded-value"
 }
 
 func whatTheType(i interface{}) {
