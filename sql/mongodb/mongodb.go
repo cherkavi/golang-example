@@ -121,6 +121,8 @@ func main() {
 	session := openSession()
 	defer session.Close()
 
+	// session.Copy() - copy existing connection, like create new one ( without authentication )
+
 	serverStatus(session)
 	pingDatabase(session)
 	printDatabases(session)
