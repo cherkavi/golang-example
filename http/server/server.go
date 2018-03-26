@@ -35,6 +35,14 @@ func Example() {
 	// go http.ListenAndServe(fmt.Sprintf(":%v", portNumber), ServerHandler{})
 	http.HandleFunc("/get", rootHandler)
 	go http.ListenAndServe(fmt.Sprintf(":%v", portNumber), nil)
+	/*
+		server:=&http.Server{
+			Addr: fmt.Sprintf(":%v", portNumber),
+			Handler: rootHandler,
+			ReadTimeout: time.Second*2,
+			WriteTimeout: time.Second*2
+		}
+	*/
 
 	fmt.Printf("waiting for start of the server: 127.0.0.1:%v \n", portNumber)
 	time.Sleep(1 * time.Second)
