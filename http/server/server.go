@@ -22,6 +22,7 @@ type ServerHandler struct {
 }
 
 func (h ServerHandler) ServeHTTP(response http.ResponseWriter, request *http.Request) {
+	// request.URL.Path - request url
 	response.WriteHeader(407)
 	var writer = bufio.NewWriter(response)
 	writer.WriteString("example of error message ")
