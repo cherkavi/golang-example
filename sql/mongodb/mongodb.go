@@ -101,7 +101,7 @@ func deleteData(session *mgo.Session) {
 	collection := getCollection(session)
 	// selector := bson.M{"id": bson.M{"$eq": nil}}
 	selector := bson.M{"id": bson.M{"$eq": 100}}
-	if err := collection.Remove(selector); err != nil {
+	if err := collection.Remove(selector); err != nil { // RemoveAll
 		fmt.Println("error removing records: ", err)
 	}
 }
