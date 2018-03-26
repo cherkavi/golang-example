@@ -78,6 +78,8 @@ type SlideShow struct {
 	SlideTitle []string `xml:"slide>title"` // using xml path
 }
 
+// http client
+// rest client
 func Example() {
 	fmt.Println("---------- read data from url ----------")
 	fmt.Println(string(readFromUrl("http://ip.jsontest.com")))
