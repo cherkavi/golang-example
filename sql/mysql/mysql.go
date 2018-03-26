@@ -58,7 +58,7 @@ func selectData(db *sql.DB) {
 	}
 	defer rows.Close()
 
-	var id int
+	var id string // can be int, string, float32 ...
 	var name string
 	for rows.Next() {
 		err := rows.Scan(&id, &name)
@@ -71,10 +71,10 @@ func selectData(db *sql.DB) {
 
 }
 
-// docker pull mysql
-// docker run --detach --env MYSQL_ROOT_PASSWORD=root --env MYSQL_USER=root --env MYSQL_PASSWORD=root --env MYSQL_DATABASE=technik_db --name golang_mysql --publish 3306:3306 mysql;
+// docker pull mongo
+// docker run --detach --name golang_mongo --publish 27017:27017 mongo
 func main() {
-	fmt.Println("---- open MySQL database --- ")
+	fmt.Println("---- open Mongo database --- ")
 	db := openDB("technik_db", "root", "root")
 	defer db.Close()
 
