@@ -1,4 +1,5 @@
 ## links 
+* [documentation](https://godoc.org)
 * [how to write code](https://golang.org/doc/code.html)
 * [effective go](https://golang.org/doc/effective_go.html)
 * [overview of Go syntax and features](https://github.com/a8m/go-lang-cheat-sheet)
