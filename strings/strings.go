@@ -42,4 +42,7 @@ func main() {
 		fmt.Printf("first byte of [%v]  is %q \n", first, nextByte)
 	}
 
+	s := "abcdefgh"
+	fmt.Printf(" original string [%v] substring 0:3 [%v]  substring 3:len(s) [%v]\n ", s, s[:3], s[3:])
+
 }
