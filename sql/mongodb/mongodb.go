@@ -90,7 +90,7 @@ func printAllRecords(session *mgo.Session) {
 		fmt.Println("Record count : ", count)
 	}
 
-	iter := collection.Find(findMap).Iter()
+	iter := collection.Find(findMap).Iter() // .Select - will strict amount of fields to be returned
 	var result Record
 	for iter.Next(&result) {
 		fmt.Println(result)
