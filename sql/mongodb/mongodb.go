@@ -26,6 +26,7 @@ func openSession() *mgo.Session {
 	return session
 }
 
+// all elements should be public
 type Record struct {
 	ID   int    `bson: "id"`
 	Name string `bson: "name"`
