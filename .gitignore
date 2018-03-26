@@ -3,3 +3,4 @@
 pkg
 src
 unittesting/debug.test
+test.db
