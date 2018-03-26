@@ -27,6 +27,7 @@ func openSession() *mgo.Session {
 }
 
 // all elements should be public
+// _id - reserved name
 type Record struct {
 	ID   int    `bson: "id"`
 	Name string `bson: "name"`
