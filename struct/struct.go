@@ -107,7 +107,7 @@ func main() {
 
 	p1 := Point{1, 2}
 	p2 := Point{1, 2}
-	p3 := struct {
+	p3 := struct { // example of anonymous struct
 		Left  int
 		Right int
 	}{1, 2}
