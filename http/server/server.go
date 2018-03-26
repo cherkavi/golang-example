@@ -33,13 +33,18 @@ func Example() {
 	var portNumber = 8001
 	fmt.Printf("---- start local server on port :%v \n", portNumber)
 
+	// execute with default handler
 	// go http.ListenAndServe(fmt.Sprintf(":%v", portNumber), ServerHandler{})
+
 	http.HandleFunc("/get", rootHandler)
+	http.Handle("/request", ServerHandler{})
 	go http.ListenAndServe(fmt.Sprintf(":%v", portNumber), nil)
+
+	// alternative way to execute listener
 	/*
 		server:=&http.Server{
 			Addr: fmt.Sprintf(":%v", portNumber),
-			Handler: rootHandler,
+			Handler: rootHandler, // ServerHandler{}
 			ReadTimeout: time.Second*2,
 			WriteTimeout: time.Second*2
 		}
@@ -50,5 +55,6 @@ func Example() {
 
 	fmt.Println("open browser")
 	exec.Openbrowser(fmt.Sprintf("http://127.0.0.1:%v/get?param1='hello'&param2=10", portNumber))
+	exec.Openbrowser(fmt.Sprintf("http://127.0.0.1:%v/request", portNumber))
 
 }
