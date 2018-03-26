@@ -37,8 +37,7 @@ func insertData(db *sql.DB, value string) {
 	}
 	defer transaction.Commit()
 
-	result, err := db.Exec("insert into test_data(name) values (?)", value)
-	if err != nil {
+	if result, err := db.Exec("insert into test_data(name) values (?)", value); err != nil {
 		fmt.Println("error inserting data ", err)
 		return
 	}
