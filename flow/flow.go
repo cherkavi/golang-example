@@ -42,6 +42,7 @@ func main() {
 	switch controlValue := x - 10; { // variable 'controlValue' visible into inner scope only
 	case controlValue > 0:
 		fmt.Println("case when controlValue biggest than 0")
+		break // not necessary - only for reading
 	case controlValue == 0:
 		fmt.Println("case when controlValue equals 0")
 	default:
@@ -64,6 +65,7 @@ func main() {
 		fallthrough
 	case controlValue > 40:
 		fmt.Println("strange, but condition was not considered : controlValue > 40, after this line will stop ( no fallthrough )")
+		break // can be ommited
 	case controlValue > 0:
 		fmt.Println("controlValue > 0")
 	}
