@@ -58,6 +58,8 @@ func main() {
 
 	fmt.Println("const from another package: ", constants.Message)
 
+	fmt.Printf("const with no value: %#v  %T", constants.EmptyConstant2, constants.EmptyConstant2)
+
 	fmt.Printf("\n ---- different types, function as a type ---- \n")
 
 	var arrayExample = [5]uint64{10, 11, 12, 13, 14}

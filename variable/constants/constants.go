@@ -7,9 +7,11 @@ var k string = "not visible variable"
 const PI float32 = 3.1412
 
 const (
-	Message      = "this is const message"
-	ErrorMessage = "this is error message "
-	LongMessage  = ` this
+	Message        = "this is const message"
+	EmptyConstant1 // example of the empty constant - value will be picked up from value above
+	EmptyConstant2 // example of the empty constant - value will be picked up from value above
+	ErrorMessage   = "this is error message "
+	LongMessage    = ` this
 	is multi-line
 	message 
 	`
