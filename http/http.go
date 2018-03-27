@@ -7,6 +7,7 @@ import (
 	"./readget"
 	"./restapp"
 	"./server"
+	"./sslserver"
 	"./websocket"
 )
 
@@ -17,5 +18,6 @@ func main() {
 	restapp.Example()
 	fileserver.StartFileServer()
 	websocket.ExampleOfWebSocket()
+	sslserver.ExampleOfSSL()
 	time.Sleep(time.Second * 20)
 }
