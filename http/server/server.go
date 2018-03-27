@@ -13,6 +13,7 @@ import (
 func rootHandler(response http.ResponseWriter, request *http.Request) {
 	fmt.Println("request url: ", request.RequestURI)
 	urlValues, _ := url.Parse(request.RequestURI)
+	// url.Values().Encode("name=Jack&position=manager&age=41")
 	fmt.Printf("request param1: %v\n", urlValues.Query().Get("param1"))
 	fmt.Printf("request param2: %v\n", urlValues.Query().Get("param2"))
 	fmt.Fprintf(response, "time: %v", time.Now().Format(time.RFC1123))
