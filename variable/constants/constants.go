@@ -9,4 +9,8 @@ const PI float32 = 3.1412
 const (
 	Message      = "this is const message"
 	ErrorMessage = "this is error message "
+	LongMessage  = ` this
+	is multi-line
+	message 
+	`
 )
