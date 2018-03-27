@@ -101,7 +101,13 @@ func Example() {
 	router.HandleFunc("/person/{id}", Delete).Methods("DELETE")
 	go http.ListenAndServe(":8002", router)
 	time.Sleep(time.Second * 2)
+
 	url := "http://127.0.0.1:8002/person"
 	fmt.Println("---- open url:  ", url)
 	exec.Openbrowser(url)
+
+	url = "http://127.0.0.1:8002/person/2"
+	fmt.Println("---- open url:  ", url)
+	exec.Openbrowser(url)
+
 }
