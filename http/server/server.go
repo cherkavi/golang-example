@@ -49,6 +49,12 @@ func Example() {
 			WriteTimeout: time.Second*2
 		}
 	*/
+	// alternative way to execute listener
+	/*
+		fileServer := http.NewServeMux()
+		fileServer.Handle("/", http.FileServer(http.Dir(path)))
+		go http.ListenAndServe(fmt.Sprintf(":%v", portNumber), fileServer)
+	*/
 
 	fmt.Printf("waiting for start of the server: 127.0.0.1:%v \n", portNumber)
 	time.Sleep(1 * time.Second)
