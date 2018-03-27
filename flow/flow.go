@@ -39,11 +39,24 @@ func main() {
 	}
 	fmt.Println()
 
+	fmt.Println("---- switch with 'inner' variable ---- ")
 	switch controlValue := x - 10; { // variable 'controlValue' visible into inner scope only
 	case controlValue > 0:
 		fmt.Println("case when controlValue biggest than 0")
 		break // not necessary - only for reading
 	case controlValue == 0:
+		fmt.Println("case when controlValue equals 0")
+	default:
+		fmt.Println("other cases ")
+	}
+	fmt.Println()
+
+	fmt.Println("---- switch without values, just cases ---- ")
+	switch { // switch without values
+	case x-10 > 0:
+		fmt.Println("case when controlValue biggest than 0")
+		break // not necessary - only for reading
+	case x == 0:
 		fmt.Println("case when controlValue equals 0")
 	default:
 		fmt.Println("other cases ")
