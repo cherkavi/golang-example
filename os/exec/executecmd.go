@@ -6,8 +6,10 @@ import (
 	"os"
 	"os/exec"
 	"runtime"
+	// import "github.com/toqueteos/webbrowser"
 )
 
+// webbrowser.Open("http://golang.org")
 func Openbrowser(url string) {
 	var err error
 
