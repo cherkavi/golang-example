@@ -16,3 +16,15 @@ const (
 	message 
 	`
 )
+
+const (
+	// example of the sequence of constants
+	Zero = 1 * iota
+	One
+	Two // some value can be ignored using underscore
+	Three
+	Four
+	Five
+	Six
+	Seven
+)

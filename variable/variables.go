@@ -58,7 +58,9 @@ func main() {
 
 	fmt.Println("const from another package: ", constants.Message)
 
-	fmt.Printf("const with no value: %#v  %T", constants.EmptyConstant2, constants.EmptyConstant2)
+	fmt.Printf("const with no value: %#v  %T \n", constants.EmptyConstant2, constants.EmptyConstant2)
+
+	fmt.Printf("const sequence: %#v %#v %#v %#v \n", constants.One, constants.Two, constants.Three, constants.Four)
 
 	fmt.Printf("\n ---- different types, function as a type ---- \n")
 
