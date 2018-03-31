@@ -27,6 +27,8 @@ func main() {
 		}
 		return symbol
 	}, first))
+	fmt.Printf("replace of the string : %v \n", strings.Replace("this is my $personal string", "$personal", "RED", -1))
+
 	fmt.Printf("repeat symbol [%v]\n", strings.Repeat("*_*|", 5))
 
 	var stringBuilder strings.Builder
