@@ -6,6 +6,7 @@ import (
 	csv "./csv"
 	json "./json"
 	xml "./xml"
+	yaml "./yaml"
 )
 
 func main() {
@@ -15,6 +16,10 @@ func main() {
 
 	fmt.Println("---- working with XML ----")
 	xml.Example()
+	fmt.Println()
+
+	fmt.Println("---- working with Yaml ----")
+	yaml.Example()
 	fmt.Println()
 
 	fmt.Println("---- working with CSV ----")
