@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <entry x="10" y="12" width="200" height="130" direction="0" id="1"/>
+    <entry x="11" y="13" width="201" height="131" direction="-1" id="2"/>
+    <entry x="12" y="14" width="202" height="132" direction="1" id="3"/>    
+</configuration>
+
