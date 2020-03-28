@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <entry x="0"  y="500"  width="250" height="200"
+         direction="-1" id="1"/>
+
+    <entry x="250"  y="500"  width="250" height="200"
+         direction="-1" id="2"/>
+
+    <entry x="500"  y="500"  width="250" height="200"
+         direction="-1" id="3"/>
+
+    <entry x="800" y="500" width="250" height="200" direction="0" id="0"/>
+    <entry x="1050" y="500" width="250" height="200" direction="1" id="-1"/>
+</configuration>
+
